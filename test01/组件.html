@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<div id="app">
+	<!-- 	 <ul>
+		    <!--
+		      现在我们为每个 todo-item 提供 todo 对象
+		      todo 对象是变量，即其内容可以是动态的。
+		      我们也需要为每个组件提供一个“key”，稍后再
+		      作详细解释。
+		    -->
+		    <!-- <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item> -->
+		  <!-- </ul> -->
+		  <div>{{info}}</div>
+		</div>
+	<body>
+		
+	</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		//定义一个组件
+		// Vue.component('todo-item', {
+		//   props: ['todo'],
+		//   template: '<li>{{ todo.text}}</li>'
+		// })
+		
+		new Vue({
+		el:"#app",
+		data:{
+		     info:{
+				 
+			 }			
+					
+				
+			},
+		  // groceryList: [
+		  //     { id: 0, text: '蔬菜' },
+		  //     { id: 1, text: '奶酪' },
+		  //     { id: 2, text: '随便其它什么人吃的东西' }
+		  //   ],
+			mounted(){
+				axios.get('new_file.json').then(response=>(this.info=response.data))
+			}
+		});
+			
+	</script>
+
+</html>

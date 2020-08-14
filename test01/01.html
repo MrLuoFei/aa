@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	
+		<div id="app-7">
+			
+	<pp></pp>
+		</div>
+		<template id="ccc">
+			<div><h2>哈哈哈哈</h2>
+			<p>傻逼</p>
+			</div>
+		</template>
+	</body>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		
+		
+	
+	<script> 
+  let vv=Vue.component('pp',{
+	
+	 template:'#ccc'
+  })
+	
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { id: 0, text: '蔬菜' },
+      { id: 1, text: '奶酪' },
+      { id: 2, text: '随便其它什么人吃的东西' }
+    ]
+  },
+  components:{
+	  vv
+  }
+  
+ 
+})
+		
+	</script>
+</html>

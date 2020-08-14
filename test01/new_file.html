@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">8887878
+			<cpn></cpn>
+			<table border="1px solid red" cellpadding=0 cellspacing=0 v-if="message.length">
+				<head>
+					<tr>
+						
+						<th></th>
+						<th>书籍名称</th>
+						<th>出版日期</th>
+						<th>价格</th>
+						<th>购买数量</th>
+						<th>操作</th>
+					</tr>
+				</head>
+				<tbody>
+					<tr v-for="(item,index) in message">
+						<th>{{item.id}}</th>
+						<th>{{item.name}}</th>
+						<th>{{item.data}}</th>	
+						<th>
+							{{getFuntion(item.price)}}
+						</th>
+						<th>
+						<button type="button"  @click="incr(index)">-</button>
+						{{item.count}}
+						<button type="button"  @click="add(index)">+</button>
+						</th>
+						<th>
+							<button type="button" @click="removeHanlder(index)">移除</button>
+						</th>
+					</tr>
+				</tbody>
+				
+				<h2>总价格：{{getFuntion(total)}}</h2>
+			</table>
+			<h2 v-else>购物车从为空</h2>
+			
+			
+			
+		</div>
+		<template id="hhh">
+			<div>
+				<h2>哈哈哈哈哈哈</h2>
+				<p>威威威威威威威威威威</p>
+			</div>
+		</template>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	Vue.component('cpn',{
+		template:'#hhh'
+	})
+	
+	let attr=new Vue({
+		el:"#app",
+		data:{
+			message:[
+				{id:1, name:"张三" , data:"2012-09-02" , price: 100.00 , count: 1},
+				{id:2, name:"李四" , data:"2012-09-02" , price: 200.00 , count: 1},
+				{id:3, name:"王五" , data:"2012-09-02" , price: 421.00 , count: 1},
+				{id:4, name:"找刘" , data:"2012-09-02" , price: 122.00 , count: 1},
+			]
+		},
+		methods:{
+			add:function(index){
+				this.message[index].count++;
+				
+			},
+			incr:function(index){
+				if(this.message[index].count<=1){
+					alert("数量不能为0");
+				}else{
+					this.message[index].count--;
+				}
+			},
+			   getFuntion:function(price){
+				  return '￥'+ price.toFixed(2)
+			   },
+			removeHanlder:function(index){
+				this.message.splice(index,1)
+			}
+	
+		},
+		computed:{
+			total:function(){
+				let totalPrice=0;
+				for(let i=0; i<this.message.length;i++){
+					totalPrice+=this.message[i].price * this.message[i].count;
+				}
+				return totalPrice;
+			}
+		}
+
+	})
+</script>
+</html>
